@@ -9,19 +9,10 @@ load_dotenv()
 
 import textwrap
 
-a = 3
-b = 6
-inputs = {"a": 3, "b": 6}
 
-code = """
-result = {}
-result['sum'] = a + b
-result['product'] = a * b
-"""
-
-
-
-def execute_code(code: str, inputs: dict):
+def execute_code(code: str, inputs: dict = {}, outputs: dict = None):
+    outputs = outputs or {} 
+    inputs = inputs or {}
     try:
         # Remove indentation from the code string
         code = textwrap.dedent(code)
@@ -29,13 +20,25 @@ def execute_code(code: str, inputs: dict):
         # Compile the code string into a code object
         code_obj = compile(code, "<string>", "exec")
 
-        # Execute the code object with the provided inputs
-        result = {}
-        exec(code_obj, inputs, result)
-        return result
+        # Execute the code object with the provided inputs and outputs
+        exec(code_obj, inputs, outputs)
+        return outputs
     except Exception as e:
         return f"An Exception occurred: {e}"
 
 
-result = execute_code(code, inputs)
-print(result)
+if __name__ == "__main__":
+    inputs = {"a": 3, "b": 4}
+
+    code1 = """
+        result = {}
+        result['sum'] = a + b
+        result['product'] = a * b
+        """
+    print(execute_code(code1, inputs))
+
+    inputs["input_array"] = [5, 2, 8, 1, 9]
+    code2 = """
+        sorted_array = sorted(input_array)
+        """
+    print(execute_code(code2, inputs))
