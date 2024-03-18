@@ -11,7 +11,7 @@ import textwrap
 
 
 def execute_code(code: str, inputs: dict = {}, outputs: dict = None):
-    outputs = outputs or {} 
+    outputs = outputs or {}
     inputs = inputs or {}
     try:
         # Remove indentation from the code string
@@ -28,17 +28,21 @@ def execute_code(code: str, inputs: dict = {}, outputs: dict = None):
 
 
 if __name__ == "__main__":
-    inputs = {"a": 3, "b": 4}
 
+    inputs = {"a": 3, "b": 4}
     code1 = """
         result = {}
         result['sum'] = a + b
         result['product'] = a * b
         """
-    print(execute_code(code1, inputs))
+    result = execute_code(code1, inputs)
+    print(result)
+    assert result == {"result": {"sum": 7, "product": 12}}
 
     inputs["input_array"] = [5, 2, 8, 1, 9]
     code2 = """
         sorted_array = sorted(input_array)
         """
-    print(execute_code(code2, inputs))
+    result = execute_code(code2, inputs)
+    assert result == {"sorted_array": [1, 2, 5, 8, 9]}
+    print(result)
