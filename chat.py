@@ -9,7 +9,7 @@ response = chat_engine.chat("how old was napoleon when he died?")
 
 print(response)
 
-response = chat_engine.chat("can you translate what you jsut said to italian?")
+response = chat_engine.chat("can you translate what you just said to italian?")
 
 
 print(response)

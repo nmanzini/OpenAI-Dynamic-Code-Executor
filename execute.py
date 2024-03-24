@@ -2,7 +2,7 @@ import textwrap
 
 
 def execute_code(
-    code: str, inputs: dict = None, outputs: dict = None
+    snippet: str, inputs: dict = None, outputs: dict = None
 ) -> dict:
     """
     code: str
@@ -28,15 +28,15 @@ def execute_code(
 
     inputs = inputs or {}
     try:
-        code = textwrap.dedent(code)
-        code = "outputs = {}\n" + code
+        snippet = textwrap.dedent(snippet)
+        snippet = "outputs = {}\n" + snippet
 
-        code_obj = compile(code, "<string>", "exec")
+        code_obj = compile(snippet, "<string>", "exec")
         local = dict(inputs)
         exec(code_obj, None, local)
 
         if verbose:
-            print(f"execute_code code   : {code[:100]}")
+            print(f"execute_code code   : {snippet[:100]}")
             print(f"execute_code inputs : {inputs}")
             print(f"execute_code outputs: {local["outputs"]}")
         return local["outputs"]

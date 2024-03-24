@@ -1,7 +1,9 @@
 from llama_index.core.agent import ReActAgent
+from llama_index.agent.openai import OpenAIAgent
 from llama_index.llms.anthropic import Anthropic
 from llama_index.llms.openai import OpenAI
 from llama_index.core.base.llms.types import ChatMessage
+from llama_index.core.memory import ChatMemoryBuffer
 
 
 from llama_index.core.tools import FunctionTool
@@ -9,28 +11,36 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-import execute
+import store
 
 
-execute_tool = FunctionTool.from_defaults(fn=execute.execute_code)
+add_tool = FunctionTool.from_defaults(fn=store.addCodeDefinition)
+get_tool = FunctionTool.from_defaults(fn=store.getCodeDefinition)
+get_all_tool = FunctionTool.from_defaults(fn=store.getAllCodeDefinitions)
+execute_tool = FunctionTool.from_defaults(fn=store.executeCodeDefinition)
 
 
-llm = OpenAI()
-llm = Anthropic()
-chat_history = [
-    ChatMessage(
-        role="system",
-        content="you are a code generator, the user will request code from you. you want to ship working code so you can trial and test it before showing it tot he user Don't add print statement to the code. try to use the inputs the user wants and do not hardocde variables in the code too much. Good Luck!",
-    )
-]
+content = """you are a code generator, the user will request code from you.
+read in depth the description of the tool.
+you want to ship working code that aheres to input and output definitions you make
+Also remember to actually trial and execute and test it touroughly before returning to the usee Don't add print statement to the code.
+Try to use the inputs the user wants and do not hardocde variables in the code too much.
+YOu have to run the tools. the user cannot see anything else exept trough the tools.
+Good Luck!"""
 
-agent = ReActAgent.from_tools(
-    [execute_tool], llm=llm, verbose=True, chat_history=chat_history
+
+chat_history = [ChatMessage(role="system", content=content)]
+
+
+llm = OpenAI(model="gpt-4-turbo-preview")
+agent = OpenAIAgent(
+    llm=llm,
+    tools=[add_tool, get_tool, get_all_tool, execute_tool],
+    verbose=True,
+    prefix_messages=chat_history,
+    memory=ChatMemoryBuffer(token_limit=2000),
 )
 
 if __name__ == "__main__":
-
-    agent.chat(
-        "write code that returns the divisors of a number"
-    )
-    # agent.chat_repl()
+    agent.chat("write code that returns the divisors of a number")
+    agent.chat("run with 8640")
