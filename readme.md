@@ -5,6 +5,9 @@ This project is a Python-based code generator that uses OpenAI's GPT-4 model to 
 
 PS: This is a really simple and not clean code written on a flight after the AGI house hackathon in March 16th 2024.
 
+## Usage
+To use the application, run main.py. You can interact with the OpenAI agent in the REPL mode. You can ask the agent to generate code snippets and then run that code with specific inputs.
+
 ![image](imgs/Screenshot2024-03-24.png)
 
 # Code Generator with OpenAI
@@ -37,8 +40,7 @@ In order for this project to work, you need to set keys in your .env file:
 - `ANTHROPIC_API_KEY`: This is the API key for the Anthropic platform. You can obtain this key from your Anthropic account. It is optional in current setup.
 ```
 
-## Usage
-To use the application, run main.py. You can interact with the OpenAI agent in the REPL mode. You can ask the agent to generate code snippets and then run that code with specific inputs.
+
 
 ## Contributing
 Contributions are welcome. Please open an issue to discuss your idea before making a pull request.
