@@ -42,5 +42,6 @@ agent = OpenAIAgent(
 )
 
 if __name__ == "__main__":
-    agent.chat("write code that returns the divisors of a number")
-    agent.chat("run with 8640")
+    # agent.chat("write code that returns the divisors of a number")
+    # agent.chat("run with 8640")
+    agent.chat_repl()
