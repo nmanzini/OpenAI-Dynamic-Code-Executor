@@ -27,8 +27,16 @@ To install the required dependencies, run the following command:
 pip install -r requirements.txt
 ```
 
-Usage
+## Environment
+In order for this project to work, you need to set keys in your .env file:
+
+```env
+- `OPENAI_API_KEY`: This is the API key for OpenAI. You can obtain this key from your OpenAI account. It is required in current setup.
+- `ANTHROPIC_API_KEY`: This is the API key for the Anthropic platform. You can obtain this key from your Anthropic account. It is optional in current setup.
+```
+
+## Usage
 To use the application, run main.py. You can interact with the OpenAI agent in the REPL mode. You can ask the agent to generate code snippets and then run that code with specific inputs.
 
-Contributing
+## Contributing
 Contributions are welcome. Please open an issue to discuss your idea before making a pull request.
