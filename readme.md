@@ -1,7 +1,7 @@
 
 # Dynamic Code Generator and Executor with OpenAI and Lama index
 
-This project is a Python-based code generator that uses OpenAI's GPT-4 model to generate, store, and dynamically execute code snippets based on user requests. The ability to execute code dynamically is a powerful feature that allows for a highly interactive and flexible user experience. The project also provides functionality to store code snippets for future reference and recall.
+This project is a Python-based code generator that uses OpenAI's GPT-4 model to generate, store, and dynamically execute code snippets based on user requests. The ability to execute code dynamically is a powerful feature that allows for the agent to refine and fix its own code. The project also provides functionality to store code snippets for future reference and recall.
 
 PS: This is a really simple and not clean code written on a flight after the AGI house hackathon in March 16th 2024.
 
