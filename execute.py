@@ -45,7 +45,8 @@ def execute_code(
 
 
 if __name__ == "__main__":
-
+    # this is used as a quick test to verify that the code works
+    
     inputs = {"a": 3, "b": 4}
     code1 = """
         outputs['sum'] = a + b
