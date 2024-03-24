@@ -5,6 +5,8 @@ This project is a Python-based code generator that uses OpenAI's GPT-4 model to 
 
 PS: This is a really simple and not clean code written on a flight after the AGI house hackathon in March 16th 2024.
 
+![image](imgs/Screenshot2024-03-24.png)
+
 # Code Generator with OpenAI
 
 This project is a Python-based code generator that uses OpenAI's GPT-4 model to generate and execute code snippets based on user requests.
