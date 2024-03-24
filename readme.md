@@ -1,9 +1,9 @@
 
 # LLM code generator and executor
 
-This project is a Python-based code generator that uses OpenAI's GPT-4 model to generate and execute code snippets based on user requests. It also stores them for future reference and recall.
+This project is a Python-based code generator that uses OpenAI's GPT-4 model to generate, store, and dynamically execute code snippets based on user requests. The ability to execute code dynamically is a powerful feature that allows for a highly interactive and flexible user experience. The project also provides functionality to store code snippets for future reference and recall.
 
-PS: This is a really simple and not clean code written on a flight after the agi house hackaton on march 2024.
+PS: This is a really simple and not clean code written on a flight after the AGI house hackathon in March 2024.
 
 # Code Generator with OpenAI
 
